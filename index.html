@@ -1,23 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-    <title>Sweet Memories 2</title>
+ <title>Sweet Memories 2</title>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
 
-    <script type="txt/javascript">
-        //var sweetApp = angular.module('sweetMemories', ['ngRoute']);
-        
-        var sweetApp = angular.module('sweetMemories', []);
+    <script>
+        function productController($scope)
+        {
+            $scope.maxRating = 5;
+            $scope.ratingsEnabled = function(savedRating, maxRating)
+            {
+                var ratings = new Array(maxRating);
+                
+                for (var i = 0; i < ratings.length; i++) {
+                    if (i <= (savedRating - 1))
+                        ratings[i] = true;
+                    else
+                        ratings[i] = false;
+                }
+                
+                return ratings;
+                //return new Array(maxRating);
+            };
+            $scope.product = {
+                  name: "Some Product Name",
+                  savedRating: 4,
+                  ratingsArray: $scope.ratingsEnabled(4, $scope.maxRating)
+            };
 
-        sweetApp.controller('productController', function($scope) {
-           $scope.product = {
-              name: "Some Product Name"
-           };
-           //$scope.brandsList = [];
-           $scope.rating = 4;
-        });
+        }
     </script>
     <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
     <style>
@@ -74,20 +87,18 @@
     </style>
 </head>
 <body class="baseBackground themeBackground">
-    <div ng-app="sweetMemories" class="baseWidgetContainer themeWidgetContainer">
-        <div ng-controller="productController" class="baseInputContainer themeInputContainer">
+    <div data-ng-app="" class="baseWidgetContainer themeWidgetContainer">
+        <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
             <label for="brandAutoComplete">Brand</label>
-            <input id="brandAutocomplete" />
+            <input id="brandAutocomplete" type="text" />
             
             <label for="productNameTextArea">Product Name</label>
-            <textarea id="productNameTextArea" ng-model="product.name"></textarea>
+            <textarea id="productNameTextArea" data-ng-bind="product.name"></textarea>
             
             <div class="baseRatingContainer">
-                <div class="baseRating"></div>
-                <div class="baseRating"></div>
-                <div class="baseRating"></div>
-                <div class="baseRating"></div>
-                <div class="baseRating"></div>
+                <!--   -->
+                <div class="themeRating baseRating" data-ng-repeat="rating in product.ratingsArray track by $index"
+                     data-ng-class="{'baseRatingEnabled': rating}"></div>
             </div>
             
             <input class="baseSubmitButton themeSubmitButton" type="submit" id="submitProductButton" value="Save" />

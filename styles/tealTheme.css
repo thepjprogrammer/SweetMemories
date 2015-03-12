@@ -31,9 +31,23 @@
     text-transform: uppercase;
 }
 
+.themeRating
+{
+    
+}
+
 input, textarea
 {
     border: 1px solid #bbb;
+}
+
+/**
+ * if the input is not explicitly labled type text
+ * this does not always take effect
+ * */
+input[type=text]:focus, textarea:focus
+{
+    border: 1px solid #51939F;
 }
 
 label
