@@ -1,0 +1,32 @@
+/**
+ * color palette: teals, whites, grays :)
+ *
+ * 
+ * #878B87 //gray
+ * #E4FCC7 //cream
+ * #7AC0CA //light teal
+ ***/
+
+.themeBackground
+{
+    background: #7AC0CA;
+    font-family: Arial;
+}
+
+.themeInputContainer
+{
+    background: white;
+    box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    border: 1px solid #E4FCC7;
+}
+
+input, textarea
+{
+    border: 1px solid #bbb;
+}
+
+label
+{
+    color: #333;
+    text-transform: uppercase;
+}

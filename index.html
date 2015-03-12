@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Sweet Memories</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <script type="txt/javascript">
+        var sweetApp = angular.module("sweetMemories", ['ngRoute']);
+        
+        sweetApp.controller("productController", function($scope) {
+           $scope.product = {
+              name: "Some Product Name"
+           };
+           //$scope.brandsList = [];
+           $scope.rating = 4;
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="./tealTheme.css" />
+    <style>
+        .baseBackground
+        {
+            
+        }
+        .baseWidgetContainer
+        {
+            padding: 10px 7%;
+        }
+        .baseInputContainer
+        {
+            border-radius: 5px;
+            padding: 30px 20px;
+            max-width: 300px;
+        }
+        input, textarea{
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 16px;
+            line-height: 2em;
+        }
+        label
+        {
+            
+        }
+        .baseRatingContainer
+        {
+            
+        }
+        .baseRating
+        {
+            
+        }
+    </style>
+</head>
+<body class="baseBackground themeBackground">
+    <div data-ng-app="sweetMemories" class="baseWidgetContainer themeWidgetContainer">
+        <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
+            <label for="brandAutoComplete">Brand</label>
+            <input id="brandAutocomplete" />
+            
+            <label for="productNameTextArea">Product Name</label>
+            <textarea id="productNameTextArea" ng-model="product.name"></textarea>
+            
+            <div class="baseRatingContainer">
+                <div class="baseRating" />
+                <div class="baseRating" />
+                <div class="baseRating" />
+                <div class="baseRating" />
+                <div class="baseRating" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
