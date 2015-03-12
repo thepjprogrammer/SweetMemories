@@ -2,12 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Sweet Memories</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <title>Sweet Memories 2</title>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.js"></script>
+
     <script type="txt/javascript">
-        var sweetApp = angular.module("sweetMemories", ['ngRoute']);
+        //var sweetApp = angular.module('sweetMemories', ['ngRoute']);
         
-        sweetApp.controller("productController", function($scope) {
+        var sweetApp = angular.module('sweetMemories', []);
+
+        sweetApp.controller('productController', function($scope) {
            $scope.product = {
               name: "Some Product Name"
            };
@@ -15,7 +19,7 @@
            $scope.rating = 4;
         });
     </script>
-    <link rel="stylesheet" type="text/css" href="./tealTheme.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
     <style>
         .baseBackground
         {
@@ -43,17 +47,35 @@
         }
         .baseRatingContainer
         {
-            
+            height: 32px;
+            width: 250px;
+            margin-bottom: 25px;
         }
         .baseRating
         {
-            
+            background-image: url(assets/disabled_star.png);
+            background-size: 32px 32px;
+            width:  32px;
+            height: 32px;
+            display: inline-block;
+        }
+        .baseRating:hover
+        {
+            background-image: url(assets/enabled_star.png);
+        }
+        .baseRatingEnabled
+        {
+            background-image: url(assets/enabled_star.png);
+        }
+        .baseSubmitButton
+        {
+            margin-bottom: 0px;
         }
     </style>
 </head>
 <body class="baseBackground themeBackground">
-    <div data-ng-app="sweetMemories" class="baseWidgetContainer themeWidgetContainer">
-        <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
+    <div ng-app="sweetMemories" class="baseWidgetContainer themeWidgetContainer">
+        <div ng-controller="productController" class="baseInputContainer themeInputContainer">
             <label for="brandAutoComplete">Brand</label>
             <input id="brandAutocomplete" />
             
@@ -61,12 +83,14 @@
             <textarea id="productNameTextArea" ng-model="product.name"></textarea>
             
             <div class="baseRatingContainer">
-                <div class="baseRating" />
-                <div class="baseRating" />
-                <div class="baseRating" />
-                <div class="baseRating" />
-                <div class="baseRating" />
+                <div class="baseRating"></div>
+                <div class="baseRating"></div>
+                <div class="baseRating"></div>
+                <div class="baseRating"></div>
+                <div class="baseRating"></div>
             </div>
+            
+            <input class="baseSubmitButton themeSubmitButton" type="submit" id="submitProductButton" value="Save" />
         </div>
     </div>
 </body>
