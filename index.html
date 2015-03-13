@@ -3,10 +3,16 @@
 <html>
 <head>
  <title>Sweet Memories 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
 
     <script>
+        var constants = {
+            UNSAVED_PRODUCT_ID: -1,
+            UNSAVED_BRAND_ID: -1
+        };    
+        
         function productController($scope)
         {
             $scope.maxRating = 5;
@@ -22,14 +28,45 @@
                 }
                 
                 return ratings;
-                //return new Array(maxRating);
             };
+            $scope.displaySelectedRating = function(ratingElement) {
+                //if it is not enabled then enable it
+                if(!($(ratingElement).hasClass("baseRatingEnabled")))
+                    $(ratingElement).addClass("baseRatingEnabled");               
+                
+                //ensure that the surrounding siblings are set appropriately to enabled or disabled
+                if ($(ratingElement).hasClass("baseRatingEnabled"))
+                {
+                    $(ratingElement).prevAll().addClass("baseRatingEnabled");
+                    $(ratingElement).nextAll().removeClass("baseRatingEnabled");
+                }
+                else
+                    $(ratingElement).nextAll().removeClass("baseRatingEnabled");
+            };
+            $scope.redisplaySavedRating = function(ratingElement)
+            {
+                //
+            }
+            $scope.calculateNewRating = function(ratingElement){
+                return $(ratingElement).prevAll().length + 1;
+            };
+            $scope.updateRating = function(clickEvent, ngRatingVar) {
+                var ratingElement = $(clickEvent.target);
+                $scope.displaySelectedRating(ratingElement);
+                ngRatingVar = $scope.calculateNewRating(ratingElement);
+            };
+            
             $scope.product = {
+                  /* existing products will have an id */
+                  id: constants.UNSAVED_PRODUCT_ID,
                   name: "Some Product Name",
+                  brand: {
+                    name: "Some Brand Name",
+                    id: constants.UNSAVED_BRAND_ID
+                  },
                   savedRating: 4,
                   ratingsArray: $scope.ratingsEnabled(4, $scope.maxRating)
             };
-
         }
     </script>
     <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
@@ -72,10 +109,11 @@
             height: 32px;
             display: inline-block;
         }
+        /**
         .baseRating:hover
         {
             background-image: url(assets/enabled_star.png);
-        }
+        }**/
         .baseRatingEnabled
         {
             background-image: url(assets/enabled_star.png);
@@ -90,14 +128,13 @@
     <div data-ng-app="" class="baseWidgetContainer themeWidgetContainer">
         <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
             <label for="brandAutoComplete">Brand</label>
-            <input id="brandAutocomplete" type="text" />
+            <input id="brandAutocomplete" type="text" data-ng-model="product.brand.name" />
             
             <label for="productNameTextArea">Product Name</label>
-            <textarea id="productNameTextArea" data-ng-bind="product.name"></textarea>
+            <textarea id="productNameTextArea" data-ng-model="product.name"></textarea>
             
             <div class="baseRatingContainer">
-                <!--   -->
-                <div class="themeRating baseRating" data-ng-repeat="rating in product.ratingsArray track by $index"
+                <div class="themeRating baseRating" ng-click="updateRating($event, product.savedRating)" data-ng-repeat="rating in product.ratingsArray track by $index"
                      data-ng-class="{'baseRatingEnabled': rating}"></div>
             </div>
             
