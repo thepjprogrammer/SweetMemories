@@ -1,4 +1,8 @@
+@import url(fonts/euphoria/euphoria_stylesheet.css);
+
 /**
+ * TEAL THEME
+ *
  * color palette: teals, whites, grays :)
  *
  * 
@@ -44,7 +48,7 @@
     box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.75);
     margin-bottom: 9px;
 }
-.themeSingleAwningAlternation1
+.themeSingleAwning:nth-child(odd)
 {
     /**
      * #EF77B3 - bright pink
@@ -64,7 +68,7 @@
     background: linear-gradient(to bottom, #fcecfc 0%,#fba6e1 70%,#fd89d7 72%,#ff7cd8 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#ff7cd8',GradientType=0 ); /* IE6-9 */
 }
-.themeSingleAwningAlternation2
+.themeSingleAwning:nth-child(even)
 {
 
     border-width: 1px 0 1px 0;
@@ -78,10 +82,28 @@
     background: linear-gradient(to bottom, #ffffff 0%,#f3f3f3 70%,#ededed 72%,#ffffff 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
+/***
+ * pastel yellow: #FFE692
+ * pastel purple: #A09AFF
+ **/
+.themeStoreSign
+{
+    font-family: 'euphoria_scriptregular';
+    font-size: 60px;
+    color: white;
+    text-shadow: 2px 2px 3px gray;
+}
 
 input, textarea
 {
     border: 1px solid #bbb;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+input[type=button], input[type=submit]
+{
+    font-size: 16px;
 }
 
 /**
