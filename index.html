@@ -50,10 +50,10 @@
             $scope.calculateNewRating = function(ratingElement){
                 return $(ratingElement).prevAll().length + 1;
             };
-            $scope.updateRating = function(clickEvent, ngRatingVar) {
+            $scope.updateRating = function(clickEvent) {
                 var ratingElement = $(clickEvent.target);
                 $scope.displaySelectedRating(ratingElement);
-                ngRatingVar = $scope.calculateNewRating(ratingElement);
+                $scope.product.savedRating = $scope.calculateNewRating(ratingElement);
             };
             
             $scope.product = {
@@ -122,10 +122,87 @@
         {
             margin-bottom: 0px;
         }
+        
+        
+        .baseAwning{
+            /*float: left;*/
+            height: 85px;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .baseSingleAwning{
+            height: 75px;
+            width: 25px;
+            border-radius: 0 0 13px 13px;
+            float: left;
+        }
     </style>
 </head>
 <body class="baseBackground themeBackground">
+    <div class="themeAwning baseAwning">
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation1 themeSingleAwning baseSingleAwning"></div>
+            <div class="themeSingleAwningAlternation2 themeSingleAwning baseSingleAwning"></div>
+
+    </div>
+    
     <div data-ng-app="" class="baseWidgetContainer themeWidgetContainer">
+        
+
+        
+        
         <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
             <label for="brandAutoComplete">Brand</label>
             <input id="brandAutocomplete" type="text" data-ng-model="product.brand.name" />
@@ -134,7 +211,7 @@
             <textarea id="productNameTextArea" data-ng-model="product.name"></textarea>
             
             <div class="baseRatingContainer">
-                <div class="themeRating baseRating" ng-click="updateRating($event, product.savedRating)" data-ng-repeat="rating in product.ratingsArray track by $index"
+                <div class="themeRating baseRating" ng-click="updateRating($event)" data-ng-repeat="rating in product.ratingsArray track by $index"
                      data-ng-class="{'baseRatingEnabled': rating}"></div>
             </div>
             
