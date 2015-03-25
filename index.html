@@ -69,81 +69,17 @@
             };
         }
     </script>
-    <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
-    <style>
-        .baseBackground
-        {
-            margin: 0;
-            padding: 0;
-        }
-        .baseWidgetContainer
-        {
-            padding: 10px 7%;
-        }
-        .baseInputContainer
-        {
-            border-radius: 5px;
-            padding: 30px 20px;
-            max-width: 300px;
-        }
-        input, textarea{
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 16px;
-            line-height: 2em;
-        }
-        label
-        {
-            
-        }
-        .baseRatingContainer
-        {
-            height: 32px;
-            width: 250px;
-            margin-bottom: 25px;
-        }
-        .baseRating
-        {
-            background-image: url(assets/disabled_star.png);
-            background-size: 32px 32px;
-            width:  32px;
-            height: 32px;
-            display: inline-block;
-        }
-        /**
-        .baseRating:hover
-        {
-            background-image: url(assets/enabled_star.png);
-        }**/
-        .baseRatingEnabled
-        {
-            background-image: url(assets/enabled_star.png);
-        }
-        .baseSubmitButton
-        {
-            margin-bottom: 0px;
-        }
-        .baseAwning
-        {
-            height: 90px;
-            width: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-        .baseSingleAwning
-        {
-            height: 75px;
-            width: 25px;
-            border-radius: 0 0 13px 13px;
-            float: left;
-        }
-        .baseStoreSign
-        {
-            text-align: center;
-        }
-    </style>
+        <link rel="stylesheet" type="text/css" href="./styles/baseStyles.css" />
+        <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
 </head>
 <body class="baseBackground themeBackground">
+    <div class="themeLeftWall baseLeftWall">
+        
+        <div class="themeWallEdge baseWallEdge ">
+            
+        </div>
+    </div>
+
     <div class="themeAwning baseAwning">
             <div class="themeSingleAwning baseSingleAwning"></div>
             <div class="themeSingleAwning baseSingleAwning"></div>
@@ -243,7 +179,18 @@
 
     </div>
     
+
+        <div class="themeRightWall baseRightWall">
+        
+        <div class="themeWallEdge baseWallEdge">
+            
+        </div>
+    </div>
+
+    
     <div class="themeStoreSign baseStoreSign">Sweet Memories</div>
+    
+
     
     <div data-ng-app="" class="baseWidgetContainer themeWidgetContainer">
         
