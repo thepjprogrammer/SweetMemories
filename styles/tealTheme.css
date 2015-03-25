@@ -111,6 +111,15 @@ input, textarea
     font-size: 12px;
 }
 
+input{
+    min-height: 24px;
+}
+
+textarea
+{
+    min-height: 65px;
+}
+
 input[type=button], input[type=submit]
 {
     font-size: 16px;

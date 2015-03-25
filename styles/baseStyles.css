@@ -1,3 +1,7 @@
+    body
+    {
+        overflow-x: hidden;
+    }
     .baseBackground
     {
         margin: 0;
@@ -34,7 +38,7 @@
     }
     .baseRating
     {
-        background-image: url(assets/disabled_star.png);
+        background-image: url(../assets/disabled_star.png);
         background-size: 32px 32px;
         width:  32px;
         height: 32px;
@@ -43,11 +47,11 @@
     /**
     .baseRating:hover
     {
-        background-image: url(assets/enabled_star.png);
+        background-image: url(.../assets/enabled_star.png);
     }**/
     .baseRatingEnabled
     {
-        background-image: url(assets/enabled_star.png);
+        background-image: url(../assets/enabled_star.png);
     }
     .baseSubmitButton
     {
