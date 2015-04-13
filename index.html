@@ -15,8 +15,8 @@
         
         var app = angular.module("SweetMemories", []);
         
-        /**app.controller("brandController", function ($scope) {
-            $scope.brands = [{
+        app.factory("BrandService", function(){
+            var brands = [{
                name: "Brand 1",
                id: 1
             },{
@@ -27,7 +27,27 @@
                 name: "Brand 3",
                 id: 3
             }];
-        });*/
+            
+            return {
+                all: function()
+                {
+                    return brands;
+                },
+                first: function()
+                {
+                    return brands[0];
+                },
+                last: function()
+                {
+                    return brands[brands.length - 1];
+                }
+            }
+        });
+        
+        
+        app.controller("brandController", function ($scope, BrandService) {
+            $scope.brands = BrandService.all();
+        });
         
         
         //custom dropdown directive
@@ -46,21 +66,9 @@
            }
         });
         
-        app.controller("productController", function ($scope) {
-            $scope.brands = [{
-               name: "Brand 1",
-               id: 1
-            },{
-                name: "Brand 2",
-                id: 2
-            },
-            {
-                name: "Brand 3",
-                id: 3
-            }];
+        app.controller("productController", function ($scope, BrandService) {
+            $scope.brands = BrandService.all();
 
-            
-            
             $scope.maxRating = 5;
             $scope.ratingsEnabled = function(savedRating, maxRating)
             {
