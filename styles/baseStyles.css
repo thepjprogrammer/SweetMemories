@@ -16,6 +16,10 @@
         padding-right: 30px;
 
     }
+    .baseAutocompleteContainer
+    {
+        width: 99%;
+    }
     .baseSelect:target
     {
         border: 1px solid #51939f;
@@ -58,16 +62,110 @@
         max-width: 300px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 20px;
     }
     input, textarea{
-        width: 100%;
+        /*width: 100%;*/
         border-radius: 5px;
         margin-bottom: 16px;
         line-height: 2em;
     }
+    input[type=text], textarea{
+        width: 98%;
+    }
+    input[type=submit], button
+    {
+        width: 100%;
+    }
     label
     {
         
+    }
+    .baseSavedProductsContainer
+    {
+        border-radius: 3px;
+        border: 1px solid #bbb;
+        /* removing that pesky whitespace around the rows and columns*/
+        border-spacing: 1px;
+    }
+    .baseSavedProductsContainer tr:nth-child(even){
+        background-color: #DEE8F2;
+    }
+    .baseSavedProductsContainer thead
+    {
+        text-align: left;
+        border-bottom: 1px solid #111;
+    }
+    .baseSavedProductsContainer th, .baseSavedProductsContainer td{
+        padding: 3px 6px;
+        font-weight: normal;
+    }
+    .baseSavedProductsContainer tr.tableNameHeader
+    {
+        text-align: center;
+        background: rgb(234,234,234); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(234,234,234,1) 0%, rgba(234,234,234,1) 44%, rgba(219,219,219,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,234,234,1)), color-stop(44%,rgba(234,234,234,1)), color-stop(100%,rgba(219,219,219,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+    }
+    .baseSavedProductsContainer tr.tableNameHeader th
+    {
+        /*padding: 9px 6px;*/
+        font-weight: normal;
+        column-span: all;
+        -webkit-column-span: all;
+    }
+    .baseSavedProductsContainer tr.searchHeader
+    {
+        background: rgb(234,234,234); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(234,234,234,1) 0%, rgba(234,234,234,1) 44%, rgba(219,219,219,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(234,234,234,1)), color-stop(44%,rgba(234,234,234,1)), color-stop(100%,rgba(219,219,219,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(234,234,234,1) 0%,rgba(234,234,234,1) 44%,rgba(219,219,219,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+    }
+    .baseSavedProductsContainer tr.searchHeader th
+    {
+        text-align: right;
+        width: 60%;
+    }
+    .baseSavedProductsContainer tr.searchHeader input
+    {
+        margin-bottom: 6px;
+        min-height: 18px;
+        line-height: 1.75em;
+    }
+    .baseSavedProductsContainer tr.sortColumnHeader
+    {
+        font-size: 12px;
+    }
+    .baseSavedProductsContainer tr.sortColumnHeader th{
+        background: rgb(252,252,252); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(252,252,252,1) 32%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 95%, rgba(252,252,252,1) 99%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(32%,rgba(252,252,252,1)), color-stop(53%,rgba(237,237,237,1)), color-stop(95%,rgba(237,237,237,1)), color-stop(99%,rgba(252,252,252,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(252,252,252,1) 32%,rgba(237,237,237,1) 53%,rgba(237,237,237,1) 95%,rgba(252,252,252,1) 99%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(252,252,252,1) 32%,rgba(237,237,237,1) 53%,rgba(237,237,237,1) 95%,rgba(252,252,252,1) 99%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(252,252,252,1) 32%,rgba(237,237,237,1) 53%,rgba(237,237,237,1) 95%,rgba(252,252,252,1) 99%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(252,252,252,1) 32%,rgba(237,237,237,1) 53%,rgba(237,237,237,1) 95%,rgba(252,252,252,1) 99%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#fcfcfc',GradientType=0 ); /* IE6-9 */
+    }
+    .baseSavedProductsContainer div.baseRating {
+        background-size: 18px 18px;
+        height: 18px;
+        width: 18px;
+    }
+    .baseSavedProductsContainer tbody
+    {
+        font-size: 12px;
+    }
+    .baseSavedProductsContainer th.baseBrandsColumn{
+        width: 60%;
     }
     .baseRatingContainer
     {
@@ -125,18 +223,18 @@
         position: absolute;
         left: 0;
         width: 10%;
-        height: 900px;
+        height: 1900px;
     }
     .baseRightWall
     {
         position: absolute;
         right: 0;
         width: 10%;
-        height: 900px;
+        height: 1900px;
     }
     .baseWallEdge
     {
-        height: 900px;
+        height: 1900px;
         width: 20%;
     }
     div.baseLeftWall .themeWallEdge:first-child

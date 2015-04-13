@@ -104,6 +104,14 @@
     }
 }
 
+.themeSavedProductsContainer
+{
+    
+}
+.themeSavedProductsContainer tr:nth-child(even){
+    background-color: #D7E8F7
+}
+
 input, textarea
 {
     border: 1px solid #bbb;

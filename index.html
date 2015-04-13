@@ -15,6 +15,76 @@
         
         var app = angular.module("SweetMemories", []);
         
+        
+        app.factory("ProductService", function(){
+            
+            var maximumRating = 5;
+            
+            var ratingsEnabled = function(savedRating, maxRating)
+            {
+                var ratings = new Array(maxRating);
+                
+                for (var i = 0; i < ratings.length; i++) {
+                    if (i <= (savedRating - 1))
+                        ratings[i] = true;
+                    else
+                        ratings[i] = false;
+                }
+                
+                return ratings;
+            };
+            
+            
+            var products = [{
+                id: 1,
+                name: "Cinnamon Raisin Pretzel with Frosting",
+                brand: {
+                    name: "Auntie Anne's",
+                    id: 1
+                },
+                savedRating: 4,
+                ratingsArray: ratingsEnabled(4, maximumRating)
+            },{
+                id: 2,
+                name: "Curry Kale Chips",
+                brand: {
+                    name: "Some Brand",
+                    id: 2
+                },
+                savedRating: 3,
+                ratingsArray: ratingsEnabled(3, maximumRating)
+            },
+            {
+                id: 3,
+                name: "Baby Spinach",
+                brand: {
+                    name: "Willie's",
+                    id: 3
+                },
+                savedRating: 5,
+                ratingsArray: ratingsEnabled(5, maximumRating)
+            }];
+            
+            return {
+                all: function()
+                {
+                    return products;
+                },
+                first: function()
+                {
+                    return products[0];
+                },
+                last: function()
+                {
+                    return products[products.length - 1];
+                },
+                maxRating: function()
+                {
+                    return maximumRating;
+                }
+            }
+        });
+        
         app.factory("BrandService", function(){
             var brands = [{
                name: "Brand 1",
@@ -66,7 +136,7 @@
            }
         });
         
-        app.controller("productController", function ($scope, BrandService) {
+        app.controller("productController", function ($scope, BrandService, ProductService) {
             $scope.brands = BrandService.all();
 
             $scope.maxRating = 5;
@@ -121,6 +191,8 @@
                   savedRating: 4,
                   ratingsArray: $scope.ratingsEnabled(4, $scope.maxRating)
             };
+            
+            $scope.savedProducts = ProductService.all();
         });
     </script>
         <link rel="stylesheet" type="text/css" href="./styles/baseStyles.css" />
@@ -248,20 +320,19 @@
     
     <div data-ng-app="SweetMemories" class="baseWidgetContainer themeWidgetContainer">
         
-
+        <div data-ng-controller="brandController" class="baseInputContainer themeInputContainer">
+            <label for="brandAutoComplete">Brand</label>
+            <input id="brandAutocomplete" type="text" data-ng-model="product.brand.name" />
+            
+            <input class="baseSubmitButton themeSubmitButton" type="submit" id="submitProductButton" value="Save" />
+        </div>
         
         
         <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
-            <label for="brandAutoComplete">Brand</label>
-            <div>
-                <mng-dropdown data="brands" dynamic-add="true" dropdown-class="baseSelect"></mng-dropdown>
+            <label for="brandSelect">Brand</label>
+            <div class="baseAutocompleteContainer">
+                <mng-dropdown data="brands" dynamic-add="true" dropdown-class="baseSelect"></mng-dropdown> 
             </div>
-            
-            
-            
-            <!--
-            <input id="brandAutocomplete" type="text" data-ng-model="product.brand.name" />
-            -->
             
             <label for="productNameTextArea">Product Name</label>
             <textarea id="productNameTextArea" data-ng-model="product.name"></textarea>
@@ -273,6 +344,33 @@
             
             <input class="baseSubmitButton themeSubmitButton" type="submit" id="submitProductButton" value="Save" />
         </div>
+        
+        <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
+            <table data-ng-model="savedProducts" class="baseSavedProductsContainer">
+                <thead>
+                    <tr class="tableNameHeader">
+                        <th colspan="2">Saved Products</th>
+                    </tr>
+                    <tr class="searchHeader">
+                        <th colspan="2"><input type="text" id="searchSavedProducts" class="searchProductsInput" /></th>
+                    </tr>
+                    <tr class="sortColumnHeader">
+                        <th class="baseBrandsColumn">Brand/Product</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="product in savedProducts track by $index">
+                        <td>{{product.brand.name}} {{product.name}}</td>
+                        <td>
+                            <div class="themeRating baseRating" ng-click="updateRating($event)" data-ng-repeat="rating in product.ratingsArray track by $index"
+                                data-ng-class="{'baseRatingEnabled': rating}"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 </body>
 </html>
