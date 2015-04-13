@@ -11,10 +11,56 @@
         var constants = {
             UNSAVED_PRODUCT_ID: -1,
             UNSAVED_BRAND_ID: -1
-        };    
+        };
         
-        function productController($scope)
-        {
+        var app = angular.module("SweetMemories", []);
+        
+        /**app.controller("brandController", function ($scope) {
+            $scope.brands = [{
+               name: "Brand 1",
+               id: 1
+            },{
+                name: "Brand 2",
+                id: 2
+            },
+            {
+                name: "Brand 3",
+                id: 3
+            }];
+        });*/
+        
+        
+        //custom dropdown directive
+        app.directive("mngDropdown", function(){
+           return {
+                //only used for elements
+                restrict: "E",
+                templateUrl: "templates/mngdropdown.html",
+                //template: "<select><option></option></select>",
+                scope: {
+                    modelData: "=data",
+                    allowAddNew: "=dynamicAdd",
+                    ddClass: "=dropdownClass",
+                    optClass: "=optClass"
+                }
+           }
+        });
+        
+        app.controller("productController", function ($scope) {
+            $scope.brands = [{
+               name: "Brand 1",
+               id: 1
+            },{
+                name: "Brand 2",
+                id: 2
+            },
+            {
+                name: "Brand 3",
+                id: 3
+            }];
+
+            
+            
             $scope.maxRating = 5;
             $scope.ratingsEnabled = function(savedRating, maxRating)
             {
@@ -67,7 +113,7 @@
                   savedRating: 4,
                   ratingsArray: $scope.ratingsEnabled(4, $scope.maxRating)
             };
-        }
+        });
     </script>
         <link rel="stylesheet" type="text/css" href="./styles/baseStyles.css" />
         <link rel="stylesheet" type="text/css" href="./styles/tealTheme.css" />
@@ -192,14 +238,22 @@
     
 
     
-    <div data-ng-app="" class="baseWidgetContainer themeWidgetContainer">
+    <div data-ng-app="SweetMemories" class="baseWidgetContainer themeWidgetContainer">
         
 
         
         
         <div data-ng-controller="productController" class="baseInputContainer themeInputContainer">
             <label for="brandAutoComplete">Brand</label>
+            <div>
+                <mng-dropdown data="brands" dynamic-add="true" dropdown-class="baseSelect"></mng-dropdown>
+            </div>
+            
+            
+            
+            <!--
             <input id="brandAutocomplete" type="text" data-ng-model="product.brand.name" />
+            -->
             
             <label for="productNameTextArea">Product Name</label>
             <textarea id="productNameTextArea" data-ng-model="product.name"></textarea>

@@ -2,6 +2,45 @@
     {
         overflow-x: hidden;
     }
+    .baseSelect
+    {
+        padding: 0px 6px;
+        border: 1px solid #bbb;
+        color: black;
+        border-radius: 3px;
+        background: url("../assets/arrow_down_128.png") no-repeat right;
+        background-size: 24px 24px;
+        overflow: hidden;
+        margin-bottom: 9px;
+        /*hiding that pesky default dropdown button */
+        padding-right: 30px;
+
+    }
+    .baseSelect:target
+    {
+        border: 1px solid #51939f;
+    }
+    .baseSelect select{
+        padding: 3px 0px;
+        background: transparent;
+        border: 0;
+        /*hiding that pesky default dropdown button*/
+        padding-right: 30px;
+        margin-right: -30px;
+        -webkit-appearance: none;
+        -moz-appearance: window;
+        width: 110%;
+    }
+    .baseSelect select:focus
+    {
+        border: none;
+        /*remove the glow*/
+        outline-color: transparent;
+        outline-style: none;
+        box-shadow: none;
+        /*remove the focus ring*/
+        
+    }
     .baseBackground
     {
         margin: 0;

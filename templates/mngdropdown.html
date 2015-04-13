@@ -1,0 +1,6 @@
+<div class="baseSelect">
+    <select>
+        <option class="optClass" value="{{model.id}}" data-ng-repeat="model in modelData track by $index">{{model.name}}</option>
+        <option ng-if="allowAddNew === true" value="-9">Add New</option>
+    </select>
+</div>
